@@ -1,0 +1,81 @@
+package test_util;
+
+import static org.junit.Assert.*;
+
+
+import org.junit.Before;
+import org.junit.Test;
+
+import junit.framework.Assert;
+import util.Constantes;
+
+
+
+public class Test_Constante {
+
+    private Constantes constantes;
+
+    @Before
+    public void setUp() throws Exception {
+        constantes = new Constantes();
+    }
+
+    @Test public void checkLOGIN() { Assert.assertEquals("LOGIN", constantes.LOGIN); }
+    @Test public void checkREGISTRAR() { Assert.assertEquals("REGISTRAR", constantes.REGISTRAR); }
+    @Test public void checkNOMBRE_USUARIO() { Assert.assertEquals("NOMBRE_USUARIO", constantes.NOMBRE_USUARIO); }
+    @Test public void checkPASSWORD() { Assert.assertEquals("PASSWORD", constantes.PASSWORD); }
+    @Test public void checkREG_BUTTON_REGISTRAR() { Assert.assertEquals("REG_BUTTON_REGISTRAR", constantes.REG_BUTTON_REGISTRAR); }
+    @Test public void checkREG_BUTTON_CANCELAR() { Assert.assertEquals("REG_BUTTON_CANCELAR", constantes.REG_BUTTON_CANCELAR); }
+    @Test public void checkREG_REAL_NAME() { Assert.assertEquals("REG_REAL_NAME", constantes.REG_REAL_NAME); }
+    @Test public void checkREG_USSER_NAME() { Assert.assertEquals("REG_USSER_NAME", constantes.REG_USSER_NAME); } // ojo: USSER
+    @Test public void checkREG_PASSWORD() { Assert.assertEquals("REG_PASSWORD", constantes.REG_PASSWORD); }
+    @Test public void checkREG_CONFIRM_PASSWORD() { Assert.assertEquals("REG_CONFIRM_PASSWORD", constantes.REG_CONFIRM_PASSWORD); }
+    @Test public void checkCH_CANT_HIJOS() { Assert.assertEquals("CH_CANT_HIJOS", constantes.CH_CANT_HIJOS); }
+    @Test public void checkCH_ANIO() { Assert.assertEquals("CH_FECHA", constantes.CH_ANIO); } // según requerimiento: valor "CH_FECHA"
+    @Test public void checkZONA_STANDARD() { Assert.assertEquals("ZONA_STANDARD", constantes.ZONA_STANDARD); }
+    @Test public void checkZONA_PELIGROSA() { Assert.assertEquals("ZONA_PELIGROSA", constantes.ZONA_PELIGROSA); }
+    @Test public void checkZONA_SIN_ASFALTAR() { Assert.assertEquals("ZONA_SIN_ASFALTAR", constantes.ZONA_SIN_ASFALTAR); }
+    @Test public void checkCHECK_BAUL() { Assert.assertEquals("CHECK_BAUL", constantes.CHECK_BAUL); }
+    @Test public void checkCHECK_MASCOTA() { Assert.assertEquals("CHECK_MASCOTA", constantes.CHECK_MASCOTA); }
+    @Test public void checkCANT_KM() { Assert.assertEquals("CANT_KM", constantes.CANT_KM); }
+    @Test public void checkCANT_PAX() { Assert.assertEquals("CANT_PAX", constantes.CANT_PAX); }
+    @Test public void checkNUEVO_PEDIDO() { Assert.assertEquals("NUEVO_PEDIDO", constantes.NUEVO_PEDIDO); }
+    @Test public void checkCALIFICAR_PAGAR() { Assert.assertEquals("CALIFICAR_PAGAR", constantes.CALIFICAR_PAGAR); }
+    @Test public void checkCALIFICACION_DE_VIAJE() { Assert.assertEquals("CALIFICACION_DE_VIAJE", constantes.CALIFICACION_DE_VIAJE); }
+    @Test public void checkADMINISTRADOR() { Assert.assertEquals("ADMINISTRADOR", constantes.ADMINISTRADOR); }
+    @Test public void checkNO_LOGEADO() { Assert.assertEquals("NO_LOGEADO", constantes.NO_LOGEADO); }
+    @Test public void checkCERRAR_SESION_CLIENTE() { Assert.assertEquals("CERRAR_SESION_CLIENTE", constantes.CERRAR_SESION_CLIENTE); }
+    @Test public void checkLISTA_CANDIDATOS() { Assert.assertEquals("LISTA_CANDIDATOS", constantes.LISTA_CANDIDATOS); }
+    @Test public void checkNUEVO_CHOFER() { Assert.assertEquals("NUEVO_CHOFER", constantes.NUEVO_CHOFER); }
+    @Test public void checkNUEVO_VEHICULO() { Assert.assertEquals("NUEVO_VEHICULO", constantes.NUEVO_VEHICULO); }
+    @Test public void checkNUEVO_VIAJE() { Assert.assertEquals("NUEVO_VIAJE", constantes.NUEVO_VIAJE); }
+    @Test public void checkPEDIDO_O_VIAJE_ACTUAL() { Assert.assertEquals("PEDIDO_O_VIAJE_ACTUAL", constantes.PEDIDO_O_VIAJE_ACTUAL); }
+
+    @Test public void checkDETALLE_VIAJE_CLIENTE() { Assert.assertEquals("DETALLE_VIAJE_CLIENTE", constantes.DETALLE_VIAJE_CLIENTE); }
+    @Test public void checkLISTA_VIAJES_CLIENTE() { Assert.assertEquals("LISTA_VIAJES_CLIENTE", constantes.LISTA_VIAJES_CLIENTE); }
+    @Test public void checkMOTO() { Assert.assertEquals("MOTO", constantes.MOTO); }
+    @Test public void checkAUTO() { Assert.assertEquals("AUTO", constantes.AUTO); }
+    @Test public void checkCOMBI() { Assert.assertEquals("COMBI", constantes.COMBI); }
+    @Test public void checkPERMANENTE() { Assert.assertEquals("PERMANENTE", constantes.PERMANENTE); }
+    @Test public void checkTEMPORARIO() { Assert.assertEquals("TEMPORARIO", constantes.TEMPORARIO); }
+    @Test public void checkCERRAR_SESION_ADMIN() { Assert.assertEquals("CERRAR_SESION_ADMIN", constantes.CERRAR_SESION_ADMIN); }
+    @Test public void checkPANEL_CLIENTE() { Assert.assertEquals("PANEL_CLIENTE", constantes.PANEL_CLIENTE); }
+    @Test public void checkDNI_CHOFER() { Assert.assertEquals("DNI_CHOFER", constantes.DNI_CHOFER); }
+    @Test public void checkNOMBRE_CHOFER() { Assert.assertEquals("NOMBRE_CHOFER", constantes.NOMBRE_CHOFER); }
+    @Test public void checkPATENTE() { Assert.assertEquals("PATENTE", constantes.PATENTE); }
+    @Test public void checkCANTIDAD_PLAZAS() { Assert.assertEquals("CANTIDAD_PLAZAS", constantes.CANTIDAD_PLAZAS); }
+    @Test public void checkLISTA_PEDIDOS_PENDIENTES() { Assert.assertEquals("LISTA_PEDIDOS_PENDIENTES", constantes.LISTA_PEDIDOS_PENDIENTES); }
+    @Test public void checkLISTA_CHOFERES_LIBRES() { Assert.assertEquals("LISTA_CHOFERES_LIBRES", constantes.LISTA_CHOFERES_LIBRES); }
+    @Test public void checkLISTA_VEHICULOS_DISPONIBLES() { Assert.assertEquals("LISTA_VEHICULOS_DISPONIBLES", constantes.LISTA_VEHICULOS_DISPONIBLES); }
+    @Test public void checkLISTA_VEHICULOS_TOTALES() { Assert.assertEquals("LISTA_VEHICULOS_TOTALES", constantes.LISTA_VEHICULOS_TOTALES); }
+    @Test public void checkLISTA_VIAJES_DE_CHOFER() { Assert.assertEquals("LISTA_VIAJES_DE_CHOFER", constantes.LISTA_VIAJES_DE_CHOFER); }
+    @Test public void checkCALIFICACION_CHOFER() { Assert.assertEquals("CALIFICACION_CHOFER", constantes.CALIFICACION_CHOFER); }
+    @Test public void checkTOTAL_SUELDOS_A_PAGAR() { Assert.assertEquals("TOTAL_SUELDOS_A_PAGAR", constantes.TOTAL_SUELDOS_A_PAGAR); }
+    @Test public void checkSUELDO_DE_CHOFER() { Assert.assertEquals("SUELDO_DE_CHOFER", constantes.SUELDO_DE_CHOFER); }
+    @Test public void checkLISTADO_DE_CLIENTES() { Assert.assertEquals("LISTADO_DE_CLIENTES", constantes.LISTADO_DE_CLIENTES); }
+    @Test public void checkLISTA_VIAJES_HISTORICOS() { Assert.assertEquals("LISTA_VIAJES_HISTORICOS", constantes.LISTA_VIAJES_HISTORICOS); }
+    @Test public void checkVALOR_VIAJE() { Assert.assertEquals("VALOR_VIAJE", constantes.VALOR_VIAJE); }
+    @Test public void checkCHECK_VEHICULO_ACEPTA_MASCOTA() { Assert.assertEquals("CHECK_VEHICULO_ACEPTA_MASCOTA", constantes.CHECK_VEHICULO_ACEPTA_MASCOTA); }
+
+ 
+}

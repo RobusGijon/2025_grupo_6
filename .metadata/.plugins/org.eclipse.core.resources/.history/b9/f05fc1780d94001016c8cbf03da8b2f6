@@ -1,0 +1,49 @@
+package test_chofer;
+
+import static org.junit.Assert.*;
+
+import java.time.Year;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import junit.framework.Assert;
+import modeloDatos.ChoferPermanente;
+
+public class Test_ChoferPermanente {
+
+	private ChoferPermanente chofer;
+	private String choferNombre;;
+	private String choferDNI;
+	private int anioIngreso;
+	private int cantHijos;
+	
+	@Before
+	public void setUp() throws Exception {
+	
+		choferDNI = "44312321";
+		choferNombre = "Juan Perez";
+		anioIngreso = 2000;
+		cantHijos = 2;
+		
+		chofer = new ChoferPermanente(choferDNI, choferNombre, anioIngreso, cantHijos);
+	
+	}
+
+	@Test
+	public void test_getAnioIngreso() {
+		Assert.assertEquals(chofer.getAnioIngreso(), anioIngreso);	
+	}
+	
+	@Test
+	public void test_getAntiguedad() {
+		int anioActual = Year.now().getValue();
+		Assert.assertEquals(chofer.getAntiguedad(), );
+	}
+	
+	@Test
+	public void test_getcantHijos() {
+		Assert.assertEquals(chofer.getCantidadHijos(), cantHijos);	
+	}
+
+}

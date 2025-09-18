@@ -1,0 +1,26 @@
+package test_chofer;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import modeloDatos.ChoferTemporario;
+
+public class Test_ChoferABS_ChoferTemporario {
+
+	
+	private ChoferTemporario chofer;
+	
+	@Before
+	public void setUp() throws Exception {
+	
+		chofer = new ChoferTemporario("Juan Carlos", "44231521");
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

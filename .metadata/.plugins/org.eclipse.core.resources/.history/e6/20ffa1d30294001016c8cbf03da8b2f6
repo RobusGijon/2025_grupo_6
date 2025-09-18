@@ -1,0 +1,119 @@
+package test_util;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import junit.framework.Assert;
+import util.Mensajes;
+
+public class Test_Mensajes {
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @Test
+    public void check_USUARIO_REPETIDO() {
+        String USUARIO_REPETIDO = "Usuario repetido";
+        Assert.assertEquals(Mensajes.USUARIO_REPETIDO, USUARIO_REPETIDO);
+    }
+
+    @Test
+    public void check_PASS_ERRONEO() {
+        String PASS_ERRONEO = "Password incorrecto";
+        Assert.assertEquals(Mensajes.PASS_ERRONEO, PASS_ERRONEO);
+    }
+
+    @Test
+    public void check_USUARIO_DESCONOCIDO() {
+        String USUARIO_DESCONOCIDO = "Usuario inexistente";
+        Assert.assertEquals(Mensajes.USUARIO_DESCONOCIDO, USUARIO_DESCONOCIDO);
+    }
+
+    @Test
+    public void check_PARAMETROS_NULOS() {
+        String PARAMETROS_NULOS = "Algun parametro requerido es null";
+        Assert.assertEquals(Mensajes.PARAMETROS_NULOS, PARAMETROS_NULOS);
+    }
+
+    @Test
+    public void check_PASS_NO_COINCIDE() {
+        String PASS_NO_COINCIDE = "La contrasena y su confirmacion no coinciden";
+        Assert.assertEquals(Mensajes.PASS_NO_COINCIDE, PASS_NO_COINCIDE);
+    }
+
+    @Test
+    public void check_SIN_VEHICULO_PARA_PEDIDO() {
+        String SIN_VEHICULO_PARA_PEDIDO = "Ningun vehiculo puede satisfacer el pedido";
+        Assert.assertEquals(Mensajes.SIN_VEHICULO_PARA_PEDIDO, SIN_VEHICULO_PARA_PEDIDO);
+    }
+
+    @Test
+    public void check_PEDIDO_INEXISTENTE() {
+        String PEDIDO_INEXISTENTE = "El Pedido no figura en la lista";
+        Assert.assertEquals(Mensajes.PEDIDO_INEXISTENTE, PEDIDO_INEXISTENTE);
+    }
+
+    @Test
+    public void check_CHOFER_NO_DISPONIBLE() {
+        String CHOFER_NO_DISPONIBLE = "El chofer no esta disponoble";
+        Assert.assertEquals(Mensajes.CHOFER_NO_DISPONIBLE, CHOFER_NO_DISPONIBLE);
+    }
+
+    @Test
+    public void check_VEHICULO_NO_DISPONIBLE() {
+        String VEHICULO_NO_DISPONIBLE = "El vehiculo no esta disponible";
+        Assert.assertEquals(Mensajes.VEHICULO_NO_DISPONIBLE, VEHICULO_NO_DISPONIBLE);
+    }
+
+    @Test
+    public void check_VEHICULO_NO_VALIDO() {
+        String VEHICULO_NO_VALIDO = "El vehiculo no puede atender del pedido";
+        Assert.assertEquals(Mensajes.VEHICULO_NO_VALIDO, VEHICULO_NO_VALIDO);
+    }
+
+    @Test
+    public void check_VIAJE_INEXISTENTE() {
+        String VIAJE_INEXISTENTE = "El viaje no esta regitrado";
+        // Assert.assertEquals(Mensajes.VIAJE_INEXISTENTE, VIAJE_INEXISTENTE);
+        
+        // No esta definido
+        Assert.assertTrue(false);
+    }
+
+    @Test
+    public void check_VIAJE_YA_FINALIZADO() {
+        String VIAJE_YA_FINALIZADO = "El viaje ya figura como finalizado";
+        
+       // Assert.assertEquals(Mensajes.VIAJE_YA_FINALIZADO, VIAJE_YA_FINALIZADO);
+        
+        // No esta definido
+        Assert.assertTrue(false);
+    }
+
+    @Test
+    public void check_CLIENTE_CON_VIAJE_PENDIENTE() {
+        String CLIENTE_CON_VIAJE_PENDIENTE = "Cliente con viaje pendiente";
+        Assert.assertEquals(Mensajes.CLIENTE_CON_VIAJE_PENDIENTE, CLIENTE_CON_VIAJE_PENDIENTE);
+    }
+
+    @Test
+    public void check_VEHICULO_YA_REGISTRADO() {
+        String VEHICULO_YA_REGISTRADO = "Vehiculo ya Registrado";
+        Assert.assertEquals(Mensajes.VEHICULO_YA_REGISTRADO, VEHICULO_YA_REGISTRADO);
+    }
+
+    @Test
+    public void check_CHOFER_YA_REGISTRADO() {
+        String CHOFER_YA_REGISTRADO = "Chofer Ya Registrado";
+        Assert.assertEquals(Mensajes.CHOFER_YA_REGISTRADO, CHOFER_YA_REGISTRADO);
+    }
+
+    @Test
+    public void check_CHOFER_SIN_VIAJES() {
+        String CHOFER_SIN_VIAJES = "El chofer no tiene ningun viaje realizado";
+        Assert.assertEquals(Mensajes.CHOFER_SIN_VIAJES, CHOFER_SIN_VIAJES);
+    }
+}

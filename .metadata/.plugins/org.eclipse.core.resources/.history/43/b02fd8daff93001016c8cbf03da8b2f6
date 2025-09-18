@@ -1,0 +1,28 @@
+package test_util;
+
+import static org.junit.Assert.*;
+
+
+import org.junit.Before;
+import org.junit.Test;
+
+import util.Constantes;
+
+
+
+public class Test_Constante {
+	
+	
+	private Constantes constantes;
+	
+	@Before
+	public void setUp() throws Exception {
+		constantes = new Constantes();
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
