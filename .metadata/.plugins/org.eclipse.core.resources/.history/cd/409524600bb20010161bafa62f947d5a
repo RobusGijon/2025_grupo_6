@@ -1,0 +1,26 @@
+package test_vista;
+
+import static org.junit.Assert.*;
+
+import java.awt.Robot;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import vista.Ventana;
+
+public class Test_Vista_Administrador {
+
+	private Ventana ventana;
+	private Robot robot;
+	
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

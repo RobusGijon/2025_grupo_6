@@ -1,0 +1,28 @@
+package test_controlador;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import controlador.Controlador;
+
+public class Test_Controlador_login {
+
+	
+	Controlador controlador;
+	
+	@Before
+	public void setUp() throws Exception {
+		controlador = new Controlador();
+		
+		Thread.sleep(10_000);
+		
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

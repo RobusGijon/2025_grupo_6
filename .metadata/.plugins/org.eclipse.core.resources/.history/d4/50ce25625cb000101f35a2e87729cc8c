@@ -1,0 +1,68 @@
+package test_persistencia;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import modeloNegocio.Empresa;
+import persistencia.EmpresaDTO;
+import persistencia.UtilPersistencia;
+
+public class Test_UtilPersistencia {
+
+	EmpresaDTO empresaDTO;
+	Empresa empresa;
+	
+	@Before
+	public void setUp() throws Exception {
+		empresaDTO = AuxiliarPersistenciaTesting.crearEmpresaDTOGenerico();
+		empresa = Empresa.getInstance();
+        empresa.setClientes(new HashMap<>());
+        empresa.setPedidos(new HashMap<>());
+        empresa.setVehiculos(new HashMap<>());
+        empresa.setVehiculosDesocupados(new java.util.ArrayList<>());
+        empresa.setChoferes(new HashMap<>());
+        empresa.setChoferesDesocupados(new java.util.ArrayList<>());
+        empresa.setViajesIniciados(new HashMap<>());
+        empresa.setViajesTerminados(new java.util.ArrayList<>());
+        empresa.setUsuarioLogeado(null);
+	}
+	
+	@After
+    public void tearDown() {
+        empresa.setClientes(new HashMap<>());
+        empresa.setPedidos(new HashMap<>());
+        empresa.setVehiculos(new HashMap<>());
+        empresa.setVehiculosDesocupados(new ArrayList<>());
+        empresa.setChoferes(new HashMap<>());
+        empresa.setChoferesDesocupados(new ArrayList<>());
+        empresa.setViajesIniciados(new HashMap<>());
+        empresa.setViajesTerminados(new ArrayList<>());
+        empresa.setUsuarioLogeado(null);
+    }
+
+	@Test
+	public void test_empresaToEmpresaDTO() {	
+		UtilPersistencia.empresaFromEmpresaDTO(empresaDTO);
+		EmpresaDTO empresaConvertida = AuxiliarPersistenciaTesting.empresaToEmpresaDTO(empresa);
+		assertTrue(AuxiliarPersistenciaTesting.sonIguales(empresaConvertida, empresaDTO));
+	}
+	
+	@Test
+	public void test_empresaDTOToEmpresa() {
+		
+		AuxiliarPersistenciaTesting.empresaFromEmpresaDTO(empresaDTO);
+		EmpresaDTO empresaRecibida = UtilPersistencia.EmpresaDtoFromEmpresa();
+		
+		assertTrue(AuxiliarPersistenciaTesting.sonIguales(empresaRecibida, empresaDTO));
+		
+	}
+	
+
+}

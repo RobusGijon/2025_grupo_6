@@ -1,0 +1,95 @@
+package test_vista;
+
+import static org.junit.Assert.*;
+
+import java.awt.Component;
+import java.awt.Robot;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.swing.JTextField;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import util.Constantes;
+import vista.Ventana;
+
+public class Test_Constantes_Vista {
+
+	Ventana ventana;
+	Robot robot;
+	
+	@Before
+	public void setUp() throws Exception {
+		ventana = new Ventana();
+		robot = new Robot();
+	}
+
+	private void crearEscenarioLogin(ArrayList<String> nombreUsuarios, ArrayList<String> contrasenias) {
+	    nombreUsuarios.clear();
+	    contrasenias.clear();
+
+	    // Caso general
+	    nombreUsuarios.add("nombreUsuario");
+	    contrasenias.add("pass");
+	    
+	    // 1 Caracter
+	    nombreUsuarios.add("a");
+	    contrasenias.add("a");
+	    
+	    // Caso general
+	    nombreUsuarios.add("nombreUsuario");
+	    contrasenias.add("pass");
+	    
+	    // 1 Caracter
+	    nombreUsuarios.add("a");
+	    contrasenias.add("a");
+	    // Caso general
+	    nombreUsuarios.add("nombreUsuario");
+	    contrasenias.add("pass");
+	    
+	    // 1 Caracter
+	    nombreUsuarios.add("a");
+	    contrasenias.add("a");
+//	    // Caracteres espciales
+//	    nombreUsuarios.add("n0mbr3Usuar!o");
+//	    contrasenias.add("m1ContraS3n1a");
+//	    
+//	    // Campos vacios
+//	    nombreUsuarios.add("");
+//	    contrasenias.add("");
+	}
+	
+	@Test
+	public void test_panelLogin_Constante() {
+		
+		Component compNombreUsuario = TestUtils.getComponentForName(ventana, Constantes.PANEL_LOGIN);
+		Component compPassword = TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
+		Component compLogin = TestUtils.getComponentForName(ventana, Constantes.LOGIN);
+		
+		ArrayList<String> nombreUsuarios = new ArrayList<>(); 
+		ArrayList<String> contrasenias = new ArrayList<>();
+		
+		
+		
+		this.crearEscenarioLogin(nombreUsuarios, contrasenias);
+		
+		
+		for(int i = 0; i < nombreUsuarios.size(); i++) {
+			TestUtils.clickComponent(compNombreUsuario, robot);
+			TestUtils.tipeaTexto(nombreUsuarios.get(i), robot);
+			TestUtils.clickComponent(compPassword, robot);
+			TestUtils.tipeaTexto(contrasenias.get(i), robot);
+			assertTrue(compLogin.isEnabled());
+			
+			TestUtils.borraJTextField((JTextField) compNombreUsuario, robot);
+			TestUtils.borraJTextField(compPassword, robot);
+		}
+		
+		
+		
+		
+	}
+
+}

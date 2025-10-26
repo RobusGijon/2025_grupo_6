@@ -1,0 +1,9 @@
+package test_persistencia;
+
+public class ClaseAleatoria implements Serializable{
+
+	
+	
+	public int x, y;
+	
+}

@@ -1,0 +1,67 @@
+package test_persistencia;
+
+import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import excepciones.PasswordErroneaException;
+import excepciones.UsuarioNoExisteException;
+import excepciones.UsuarioYaExisteException;
+import modeloDatos.Administrador;
+import modeloDatos.Auto;
+import modeloDatos.Chofer;
+import modeloDatos.ChoferPermanente;
+import modeloDatos.ChoferTemporario;
+import modeloDatos.Cliente;
+import modeloDatos.Combi;
+import modeloDatos.Moto;
+import modeloDatos.Pedido;
+import modeloDatos.Usuario;
+import modeloDatos.Vehiculo;
+import modeloDatos.Viaje;
+import modeloNegocio.Empresa;
+import persistencia.EmpresaDTO;
+import persistencia.PersistenciaBIN;
+import persistencia.UtilPersistencia;
+import util.Constantes;
+
+
+public class Test_utilPersistencia {
+
+	Empresa empresa;
+	EmpresaDTO empresaDTO;
+	
+	@BeforeClass
+	public void cargarDTO() throws Exception {
+		empresaDTO = AuxiliarPersistenciaTesting.crearEmpresaDTOGenerico();
+		empresa = Empresa.getInstance();
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+		
+	}
+
+	@Test
+	public void test_empresaFromEmpresaDTO() {
+		EmpresaDTO empresaDTO = AuxiliarPersistenciaTesting.crearEmpresaDTOGenerico();
+		
+		UtilPersistencia.empresaFromEmpresaDTO(empresaDTO);
+		
+		
+	}
+
+}

@@ -22,44 +22,6 @@ public class Test_Chofer_Temporario {
 		chofer = new ChoferTemporario(choferDNI, choferNombre);
 	}
 	
-	
-	/*	================================================
-	 *  
-	 * 		TODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRE
-	 * TODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRETODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRETODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRETODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRETODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRETODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRETODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRETODO: CAMBIAR NOMBRE  
-	 *		TODO: CAMBIAR NOMBRE
-	 *  	TODO: CAMBIAR NOMBRE
-	 * 	================================================
-	 * 
-	 */
-	
-	
-	/*	================================================
-	 *  
-	 * 		TEST DE LOS METODOS E IMPLEMENTACIONES 
-	 *			DE LA CLASE ABSTRACTA CHOFER
-	 *  
-	 * 
-	 * 	================================================
-	 * 
-	 */
-	
 	@Test
 	public void test_getDNI() {
 		Assert.assertEquals(chofer.getDni(), choferDNI);
@@ -85,16 +47,7 @@ public class Test_Chofer_Temporario {
 		ChoferTemporario.setSueldoBasico(nuevoSueldo);
 		Assert.assertTrue(nuevoSueldo == ChoferTemporario.getSueldoBasico());
 	}
-	
-	/*	================================================
-	 *  
-	 * 		TEST DE LOS METODOS E IMPLEMENTACIONES 
-	 *			DE LA CLASE CHOFER TEMPORARIO
-	 *  
-	 * 
-	 * 	================================================
-	 * 
-	 */
+
 	
 	@Test
 	public void test_getSueldoBruto() {
@@ -105,6 +58,17 @@ public class Test_Chofer_Temporario {
 	
 	@Test
 	public void test_getSueldoNeto() {
+		/*
+		 * 	Prueba: verificar calculo del sueldo neto
+		 * 
+		 * 			choferTemporario: ("44231481", "Juan Perez")
+		 * 					  sueldo: 1234.1234 
+		 * 
+		 * 			>> Esperado: 1061.34
+		 * 			>> Resultado: Correcto
+		 * 
+		 * */
+		
 		double sueldo = 1234.1234;
 		double sueldoNetoChofer = chofer.getSueldoBruto() * 0.86;
 		

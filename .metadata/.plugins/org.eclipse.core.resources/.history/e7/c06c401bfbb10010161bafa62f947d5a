@@ -1,0 +1,118 @@
+package test_vista;
+
+import static org.junit.Assert.*;
+
+import java.awt.Robot;
+
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import util.Constantes;
+import vista.Ventana;
+
+public class Test_Vista_panelRegistro {
+	private Ventana ventana;
+	private Robot robot;
+	private static JButton botonRegistro;
+	
+	@BeforeClass
+	public static void getComponenteRegistro() throws Exception {
+		botonRegistro = (JButton) TestUtils.getComponentForName(new Ventana(), Constantes.REGISTRAR);
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+		ventana = new Ventana();
+		robot = new Robot();
+		System.out.println(ventana.getName());
+		TestUtils.clickComponent(botonRegistro, robot);
+		System.out.println(ventana.getName());
+		System.out.println();
+	}
+	
+	private void generarEscenarioBotonRegistrar(String[][] casos) {
+		
+		casos = new String[][]{
+	        // user              , pass    , passRep , nombreReal
+	        { "nombreUsuario"    , "pass"  , "pass"  , "nombreReal"   }, // Todo completo
+	        { "nombre4Us1uario"  , "pass32", "pass32", "nombreReal12" }, // alfa numerico
+	        { "a"                , "a"     , "a"     , "a"            }, // un caracter
+	        { ""                 , "pass"  , "pass"  , "nombreReal"   }, // sin nombre usuario
+	        { "nombreUsuario"    , ""      , "pass"  , "nombreReal"   }, // sin pass
+	        { "nombreUsuario"    , "pass"  , ""      , "nombreReal"   }, // sin pass repetida
+	        { "nombreUsuario"    , "pass"  , "pass"  , ""             } //  sin nombre real
+	    };
+	    
+	}
+	
+	@Test
+	public void test_botonRegistrarHabilitado() {
+		JTextField regNombreUsuario = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_USSER_NAME);
+		JTextField regPass = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
+		JTextField regPassRep = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_CONFIRM_PASSWORD);
+		JTextField regNombreReal = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_REAL_NAME);	
+		
+		JButton botonRegistrar = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_REGISTRAR);
+		JButton botonCancelar = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_CANCELAR);
+		
+		String[][] casos = null;
+		String nombreUsuario, pass, passRep, nombreReal;
+		this.generarEscenarioBotonRegistrar(casos);
+		for(int i = 0; i < casos.length; i++) {
+			nombreUsuario = casos[i][0];
+			pass = casos[i][1];
+			passRep = casos[i][2];
+			nombreReal = casos[i][3];
+			
+			TestUtils.clickComponent(regNombreUsuario, robot);
+			TestUtils.tipeaTexto(nombreUsuario, robot);
+			TestUtils.clickComponent(regPass, robot);
+			TestUtils.tipeaTexto(pass, robot);
+			TestUtils.clickComponent(regPassRep, robot);
+			TestUtils.tipeaTexto(pass, robot);
+			
+		}
+		
+		
+	}
+
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

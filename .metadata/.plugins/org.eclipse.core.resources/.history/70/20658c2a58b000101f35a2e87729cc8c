@@ -1,0 +1,22 @@
+package test_persistencia;
+
+import java.io.Serializable;
+
+public class ClaseAleatoria implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	public int x, y;
+	public String mensaje;
+	public double z;
+	
+	
+	public ClaseAleatoria() {
+		this.x = 1;
+		this.y = 231231;
+		this.z = 492132.3123941;
+		this.mensaje = "Soy una clase aleatoria";
+	}
+	
+	
+}

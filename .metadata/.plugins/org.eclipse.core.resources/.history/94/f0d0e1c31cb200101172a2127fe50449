@@ -1,0 +1,61 @@
+package test_controlador;
+
+import static org.junit.Assert.*;
+
+import java.awt.Robot;
+import java.io.File;
+
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import controlador.Controlador;
+import util.TestUtils;
+import vista.Ventana;
+
+public class Test_Controlador_login {
+
+	
+	private Controlador controlador;
+	private Ventana ventana;
+	private Robot robot;
+
+	
+	@Before
+	public void setUp() throws Exception {
+		File archivoEmpresa = new File("empresa.bin");
+		if(archivoEmpresa.exists()) {
+			archivoEmpresa.delete();
+		}
+		
+		controlador = new Controlador();
+		ventana = (Ventana) controlador.getVista();
+		
+	}
+	
+	@AfterClass
+	public static void eliminarArchivos_despuesPruebas() throws Exception {
+		File archivoEmpresa = new File("empresa.bin");
+		if(archivoEmpresa.exists()) {
+			archivoEmpresa.delete();
+		}
+	}
+	
+	
+
+	@Test
+	public void test_loginCorrecto() {
+		TestUtils.clickComponent(compNombreUsuario, robot);
+		TestUtils.tipeaTexto(nombreUsuarios.get(i), robot);
+		TestUtils.clickComponent(compPassword, robot);
+		TestUtils.tipeaTexto(contrasenias.get(i), robot);
+		
+	}
+
+}
+
+
+
+
+

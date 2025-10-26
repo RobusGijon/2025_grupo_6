@@ -1,0 +1,18 @@
+1760841588307	Rename type 'ExcepcionesLanzador'
+1760843247193	Rename type 'LanzadorExcepcionesTest'
+1760887433884	Rename local variable 'autoViaje1'
+1760887439776	Rename local variable 'autoViaje2'
+1761148557214	Delete element
+1761158235424	Rename type 'PersistidorAux'
+1761194787562	Rename type 'UtilPersistenciaAuxiliar'
+1761194816395	Rename type 'TestUtil_Persistencia'
+1761194831292	Rename type 'UtilTestPersistencia'
+1761195521640	Rename local variable 'path'
+1761255752210	Rename field 'empresaDTO'
+1761256545449	Delete element
+1761256566965	Rename type 'Test_PersistenciaBINTest'
+1761256995870	Rename local variable 'empresaDTO'
+1761428198461	Rename type 'TestUtil'
+1761430990886	Rename local variable 'compLogin'
+1761433860108	Rename type 'Test_Constantes_Vista'
+1761433888257	Delete element

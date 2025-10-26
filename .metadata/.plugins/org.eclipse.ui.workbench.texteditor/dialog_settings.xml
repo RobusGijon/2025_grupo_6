@@ -4,8 +4,21 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="false"/>
 		<list key="findhistory">
-			<item value="assert"/>
-			<item value="salario"/>
+			<item value="retorno"/>
+			<item value="pedidoIne"/>
+			<item value="sinVe"/>
+			<item value="sinVehiculo"/>
+			<item value="guardar"/>
+			<item value="crearEMP"/>
+			<item value="pedidoInici"/>
+			<item value="asser"/>
+			<item value="viajesInicia"/>
+			<item value="system"/>
+			<item value="chofer"/>
+			<item value="chofr"/>
+			<item value="choferPer"/>
+			<item value="choferPerm"/>
+			<item value="getHisto"/>
 		</list>
 	</section>
 </section>

@@ -1,0 +1,29 @@
+package test_vista;
+
+import static org.junit.Assert.*;
+
+import java.awt.Robot;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import vista.Ventana;
+
+public class Test_Vista {
+
+	Robot robot;
+	Ventana ventana;
+
+	
+	@Before
+	public void setUp() throws Exception {
+		robot = new Robot();
+	}
+
+	@Test
+	public void test() {
+		ventana = new Ventana();
+		wait(100);
+	}
+
+}

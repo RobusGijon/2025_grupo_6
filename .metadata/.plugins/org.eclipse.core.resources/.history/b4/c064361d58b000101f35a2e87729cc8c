@@ -1,0 +1,19 @@
+package test_persistencia;
+
+import java.io.Serializable;
+
+public class ClaseAleatoria implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	public int x, y;
+	public String mensaje;
+	public double z;
+	
+	
+	public ClaseAleatoria() {
+		
+	}
+	
+	
+}

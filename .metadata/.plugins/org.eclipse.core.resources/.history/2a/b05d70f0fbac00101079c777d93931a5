@@ -1,0 +1,56 @@
+package test_persistencia;
+
+import static org.junit.Assert.*;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import excepciones.PasswordErroneaException;
+import excepciones.UsuarioNoExisteException;
+import excepciones.UsuarioYaExisteException;
+import modeloDatos.Administrador;
+import modeloDatos.Auto;
+import modeloDatos.Chofer;
+import modeloDatos.ChoferPermanente;
+import modeloDatos.ChoferTemporario;
+import modeloDatos.Cliente;
+import modeloDatos.Combi;
+import modeloDatos.Moto;
+import modeloDatos.Pedido;
+import modeloDatos.Usuario;
+import modeloDatos.Vehiculo;
+import modeloNegocio.Empresa;
+import util.Constantes;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import persistencia.EmpresaDTO;
+
+public class Test_EmpresaDTO {
+	
+	EmpresaDTO empresa;
+	
+	@Before
+	public void setUp() throws Exception {
+		empresa = new EmpresaDTO();
+	}
+
+	@Test
+	public void test_get_set_choferes() {
+		
+		
+		
+	}
+
+}

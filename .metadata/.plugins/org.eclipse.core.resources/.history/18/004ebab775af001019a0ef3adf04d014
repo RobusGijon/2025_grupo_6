@@ -1,0 +1,136 @@
+package test_persistencia;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import excepciones.PasswordErroneaException;
+import excepciones.UsuarioNoExisteException;
+import excepciones.UsuarioYaExisteException;
+import modeloDatos.Administrador;
+import modeloDatos.Auto;
+import modeloDatos.Chofer;
+import modeloDatos.ChoferPermanente;
+import modeloDatos.ChoferTemporario;
+import modeloDatos.Cliente;
+import modeloDatos.Combi;
+import modeloDatos.Moto;
+import modeloDatos.Pedido;
+import modeloDatos.Usuario;
+import modeloDatos.Vehiculo;
+import modeloDatos.Viaje;
+import modeloNegocio.Empresa;
+import persistencia.EmpresaDTO;
+import persistencia.PersistenciaBIN;
+import persistencia.UtilPersistencia;
+import util.Constantes;
+
+
+public class Test_utilPersistencia {
+
+	Empresa empresa;
+	
+	@Before
+	public void setUp() throws Exception {
+		empresa = Empresa.getInstance();
+	}
+	
+    private EmpresaDTO crearEmpresaDTOGenerico() {
+        EmpresaDTO dto = new EmpresaDTO();
+
+        // --- Choferes ---
+        ChoferTemporario chT1 = new ChoferTemporario("1122233", "Jose Perez");
+        ChoferTemporario chT2 = new ChoferTemporario("4422233", "Perez Jose");
+        ChoferPermanente chP1 = new ChoferPermanente("12333444", "Armando Paredez", 2000, 1);
+        ChoferPermanente chP2 = new ChoferPermanente("12311244", "Pablito Clavito", 2000, 1);
+
+        HashMap<String, Chofer> mapaChoferes = new HashMap<>();
+        mapaChoferes.put("1122233", chT1);
+        mapaChoferes.put("4422233", chT2);
+        mapaChoferes.put("12333444", chP1);
+        mapaChoferes.put("12311244", chP2);
+        dto.setChoferes(mapaChoferes);
+
+        ArrayList<Chofer> choferesDesocupados = new ArrayList<>();
+        choferesDesocupados.add(chT1);
+        choferesDesocupados.add(chP1);
+        dto.setChoferesDesocupados(choferesDesocupados);
+
+        // --- Clientes ---
+        Cliente cli1 = new Cliente("nombreUsuario1", "pass1", "nombreReal1");
+        Cliente cli2 = new Cliente("nombreUsuario2", "pass2", "nombreReal2");
+        Cliente cli3 = new Cliente("nombreUsuario3", "pass3", "nombreReal3");
+
+        HashMap<String, Cliente> mapaClientes = new HashMap<>();
+        mapaClientes.put("nombreUsuario1", cli1);
+        mapaClientes.put("nombreUsuario2", cli2);
+        mapaClientes.put("nombreUsuario3", cli3);
+        dto.setClientes(mapaClientes);
+
+        // --- Pedidos ---
+        Pedido ped1 = new Pedido(cli1, 7,  true,  false, 10,  Constantes.ZONA_PELIGROSA);
+        Pedido ped2 = new Pedido(cli2, 9,  false, true,  321, Constantes.ZONA_STANDARD);
+        HashMap<Cliente, Pedido> mapaPedidos = new HashMap<>();
+        mapaPedidos.put(cli1, ped1);
+        mapaPedidos.put(cli2, ped2);
+        dto.setPedidos(mapaPedidos);
+
+        // --- Usuario logeado ---
+        dto.setUsuarioLogeado(Administrador.getInstance());
+
+        // --- Vehículos ---
+        Vehiculo moto  = new Moto("MM123MM");
+        Vehiculo auto  = new Auto("AA123AA", 3, true);
+        Vehiculo combi = new Combi("CC123CC", 8, false);
+
+        HashMap<String, Vehiculo> mapaVehiculos = new HashMap<>();
+        mapaVehiculos.put("MM123MM", moto);
+        mapaVehiculos.put("AA123AA", auto);
+        mapaVehiculos.put("CC123CC", combi);
+        dto.setVehiculos(mapaVehiculos);
+
+        ArrayList<Vehiculo> vehiculosDesocupados = new ArrayList<>();
+        vehiculosDesocupados.add(moto);
+        vehiculosDesocupados.add(combi);
+        dto.setVehiculosDesocupados(vehiculosDesocupados);
+
+        // --- Viajes iniciados ---
+        Viaje v1 = new Viaje(ped1, chT1, auto);
+        Viaje v2 = new Viaje(ped2, chT2, combi);
+        HashMap<Cliente, Viaje> viajesIniciados = new HashMap<>();
+        viajesIniciados.put(cli1, v1);
+        viajesIniciados.put(cli2, v2);
+        dto.setViajesIniciados(viajesIniciados);
+
+        // --- Viajes terminados ---
+        Pedido ped3 = new Pedido(cli3, 5, true, true, 45, Constantes.ZONA_STANDARD);
+        Viaje v3 = new Viaje(ped3, chP1, moto);
+        ArrayList<Viaje> viajesTerminados = new ArrayList<>();
+        viajesTerminados.add(v3);
+        dto.setViajesTerminados(viajesTerminados);
+        
+        return dto;
+    }	
+
+	@Test
+	public void test_empresaFromEmpresaDTO() {
+		EmpresaDTO empresaDTO = crearEmpresaDTOGenerico();
+		
+		UtilPersistencia.empresaFromEmpresaDTO(empresaDTO);
+		
+		assertEquals(empresaDTO, empresa);
+		
+	}
+
+}

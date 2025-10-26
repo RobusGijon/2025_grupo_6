@@ -34,39 +34,33 @@ public class Test_Chofer_Permanente {
 
 	@Test
 	public void test_getAnioIngreso() {
-		Assert.assertEquals(chofer.getAnioIngreso(), anioIngreso);	
+		assertEquals(chofer.getAnioIngreso(), anioIngreso);	
 	}
 	
 	@Test
 	public void test_getAntiguedad() {
 		int anioActual = Year.now().getValue();		
-		Assert.assertEquals(chofer.getAntiguedad(), anioActual - anioIngreso);
+		assertEquals(chofer.getAntiguedad(), anioActual - anioIngreso);
 	}
 	
 	@Test
-	public void test_getcantHijos() {
-		Assert.assertEquals(chofer.getCantidadHijos(), cantHijos);	
-	}
-
-	@Test
-	public void test_setcantHijos() {
-		ArrayList<Integer> hijos = new ArrayList<>();
-		for(int i = 0; i < 10; i++)
-			hijos.add(i);
-		
-		for(int hijo : hijos) {
-			chofer.setCantidadHijos(hijo);
-			Assert.assertEquals(chofer.getCantidadHijos(), hijo);	
-		}
+	public void test_get_cantHijos() {
+		assertEquals(chofer.getCantidadHijos(), cantHijos);	
+		chofer.setCantidadHijos(3);
+		assertEquals(chofer.getCantidadHijos(), 3);
 	}
 	
 	//	El sueldo bruto se calcula incrementando el sueldo basico a partir de un plus por antiguedad y un plus por cantidad de hijos. 
-	//	Se icrementa un 5% del basico por cada aÃ±o de antiguedad, hasta llegar a un maximo incremento de 100% que se logra a los 20 aÃ±os.
-	//	Se icrementa un 7% del bascio por cada hijo
+	//	Se icrementa un 5% del basico por cada aÃ±o de antiguedad, hasta llegar a un maximo incremento de 100% que se logra a los 20 anios.
+	//	Se icrementa un 7% del basico por cada hijo
 		
-	private double formulaSueldoBruto(double salarioBasico,int antiguedad,int cantHijos) {
+	private double formulaSueldoBruto(ChoferPermanente chofer) {
 		double porcentajeHijos = 0.07;
 		double porcentajeAnt = 0.05;
+		
+		double salarioBasico = Chofer.getSueldoBasico();
+		int antiguedad = chofer.getAntiguedad();
+		int cantHijos = chofer.getCantidadHijos();
 		
 		antiguedad = antiguedad > 20? 20 : antiguedad;
 		
@@ -77,30 +71,97 @@ public class Test_Chofer_Permanente {
 	}
 	
 	@Test
-	public void test_getSueldoBruto() {
+	public void test_getSueldoBruto_sinPlus() {
+		/*	
+		 * 	Escenario: Chofer sin ningun plus: sin hijos ni antiguedad	
+		 * 
+		 * 			choferSinPlus = ("11222333", "Juan Perez", Year.now().getValue(), 0);
+		 * 
+		 * 	  Prueba: Deberia devolver el salarioBasico
+		 * 			
+		 * 			>> Esperado: 500000.0
+		 * 			>> Resultado: Correcto
+		 * 
+		 * */
 		
-		int anioActual = Year.now().getValue();
-		int hijosMax = 10;
-		double MAX_SUELDO = 200000;
-		double MIN_SUELDO = 1000;
-		for(int anioIngreso = anioActual - 30; anioIngreso < anioActual; anioIngreso++)
-		{
-			for(int cantHijos = 0; cantHijos < hijosMax; cantHijos++)
-			{
-				ChoferPermanente nuevoChofer = new ChoferPermanente(choferDNI, choferNombre, anioIngreso, cantHijos);
-				
-				double sueldoBasico = Math.random() * (MAX_SUELDO - MIN_SUELDO) + MIN_SUELDO;
-				nuevoChofer.setSueldoBasico(sueldoBasico);
-				
-				double sueldoBruto = formulaSueldoBruto(sueldoBasico, anioActual - anioIngreso, cantHijos);
-				Assert.assertEquals(sueldoBruto, nuevoChofer.getSueldoBruto());
-			}
-		}
+		ChoferPermanente choferSinPlus = new ChoferPermanente("11222333", "Juan Perez", Year.now().getValue(), 0);
 		
-
+		double sueldoBrutoEsperado = formulaSueldoBruto(choferSinPlus);
 		
+		assertEquals("El metodo no calculo bien su sueldo bruto: sueldoObtenido: " + choferSinPlus.getSueldoBruto()
+		+ " | sueldoEsperado: " + Chofer.getSueldoBasico(), choferSinPlus.getSueldoBruto(), Chofer.getSueldoBasico(), 1e-5);
 		
+	}
+	
+	@Test
+	public void test_getSueldoBruto_plus_hijos() {
+		/*	
+		 * 	Escenario: Chofer con hijos, sin antiguedad
+		 * 
+		 * 			choferConHijos = ("11222333", "Juan Perez", Year.now().getValue(), 3);
+		 * 
+		 * 	  Prueba: Deberia devolver el salarioBasico mas el plus de los hijos
+		 * 			
+		 * 			>> Esperado: 605000.0
+		 * 			>> Resultado: Correcto
+		 * 
+		 * */
 		
+		ChoferPermanente choferConHijos = new ChoferPermanente("11222333", "Juan Perez", Year.now().getValue(), 3);
+		
+		double sueldoBrutoEsperado = formulaSueldoBruto(choferConHijos);
+		
+		assertEquals("El metodo no calculo bien su sueldo bruto: sueldoObtenido: " + choferConHijos.getSueldoBruto()
+				+ " | sueldoEsperado: " + sueldoBrutoEsperado, choferConHijos.getSueldoBruto(), sueldoBrutoEsperado, 1e-5);
+	}
+	
+	@Test
+	public void test_getSueldoBruto_plus_antiguedad() {
+		/*	
+		 * 	Escenario: Chofer con antiguedad sin hijos
+		 * 
+		 * 			AnioActual = 2025
+		 * 
+		 * 			choferConAntiguedad = ("11222333", "Juan Perez", 2000, 0);
+		 * 
+		 * 	  Prueba: Deberia devolver el salarioBasico mas el plus de la antiguedad
+		 * 			
+		 * 			>> Esperado: 1000000.0
+		 * 			>> Resultado: INCORRECTO -> 1125000.0
+		 * 
+		 * */
+		
+		ChoferPermanente choferConAntiguedad = new ChoferPermanente("11222333", "Juan Perez", 2000, 0);
+		
+		double sueldoBrutoEsperado = formulaSueldoBruto(choferConAntiguedad);
+		
+		assertEquals("El metodo no calculo bien su sueldo bruto: sueldoObtenido: " + choferConAntiguedad.getSueldoBruto()
+		+ " | sueldoEsperado: " + sueldoBrutoEsperado, choferConAntiguedad.getSueldoBruto(), sueldoBrutoEsperado, 1e-5);
+	}
+	
+	
+	@Test
+	public void test_getSueldoBruto_plus_varios() {
+		/*	
+		 * 	Escenario: Chofer con antiguedad y con hijos
+		 * 
+		 * 			AnioActual = 2025
+		 * 
+		 * 			choferConAntiguedad = ("11222333", "Juan Perez", 2000, 5);
+		 * 
+		 * 	  Prueba: Deberia devolver el salarioBasico mas el plus de los hijos mas el plus de la antiguedad
+		 * 			
+		 * 			>> Esperado: 1300000.0
+		 * 			>> Resultado: INCORRECTO -> 1175000.0
+		 * 
+		 * */
+		
+		ChoferPermanente choferVariosPlus = new ChoferPermanente("11222333", "Juan Perez", 2000, 5);
+		
+		double sueldoBrutoEsperado = formulaSueldoBruto(choferVariosPlus);
+		
+		assertEquals("El metodo no calculo bien su sueldo bruto: sueldoObtenido: " + choferVariosPlus.getSueldoBruto()
+		+ " | sueldoEsperado: " + sueldoBrutoEsperado, choferVariosPlus.getSueldoBruto(), sueldoBrutoEsperado, 1e-5);
 	}
 	
 	

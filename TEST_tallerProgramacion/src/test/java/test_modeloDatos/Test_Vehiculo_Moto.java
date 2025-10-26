@@ -30,7 +30,7 @@ public class Test_Vehiculo_Moto {
 
 		cliente  = new Cliente("juanzerPerez", "123456789", "Juan Perez");
 		
-		patente = "AB123CD";
+		patente = "MM123MM";
 		moto = new Moto(patente);
 	}
 	
@@ -54,23 +54,34 @@ public class Test_Vehiculo_Moto {
 	
 
 	private ArrayList<Pedido> pedidosQueNoCumplen() {
+		/*
+		 * 	Escenario: Pedidos que no cumplen
+		 * 			
+		 * 						  cliente: ("A", "A", "A");
+		 * 			pedidoExcesoPasajeros: (cliente, 2 pasajero, sin mascota, sin baul, km, zona));
+		 * 			pedidoTrasladoMascota: (cliente, 1 pasajero, CON mascota, sin baul, km, zona));
+		 * 					pedidoUsoBaul: (cliente, 1 pasajero, sin mascota, CON baul, km, zona));
+		 * 
+		 * */
+		
+		
 		ArrayList<Pedido> pedidos = new ArrayList<>(); 
 		
 		cliente = new Cliente("A", "A", "A");
 		int cantidadPasajeros = 1;
-		boolean mascota = false;
+		boolean mascota = true;
 		boolean baul = true;
 		int km = 1000;
 		String zona = Constantes.ZONA_PELIGROSA;
 		
 		// cantidadPasajeros > 1
-		pedidos.add(new Pedido(cliente, 2, mascota, baul, km, zona));
+		pedidos.add(new Pedido(cliente, 2, !mascota, !baul, km, zona));
 		
 		// Traslado de mascota
-		pedidos.add(new Pedido(cliente, cantidadPasajeros, true, baul, km, zona));
+		pedidos.add(new Pedido(cliente, cantidadPasajeros, mascota, !baul, km, zona));
 
 		// Uso del baul
-		pedidos.add(new Pedido(cliente, cantidadPasajeros, mascota, true, km, zona));
+		pedidos.add(new Pedido(cliente, cantidadPasajeros, !mascota, baul, km, zona));
 		
 		
 		return pedidos;
@@ -79,27 +90,52 @@ public class Test_Vehiculo_Moto {
 	@Test
 	public void test_getPuntajeEnvio_debeRetonarNull() {
 		
-		// Si el pedido solicita solo 1 pasajero sin uso de baul y sin traslado de mascota se retorna 1000. 
-		// Se retorna null en caso contrario.		
+		/*
+		 * 	Escenario: Pedidos que no cumplen
+		 * 
+		 * 	Prueba: Todos los pedidos deben devolver null 
+		 * 			
+		 * 			>> Esperado1: null
+		 * 			>> Resultado: Correcto
+		 * 
+		 * 		 	>> Esperado2: null
+		 * 			>> Resultado: Correcto
+		 * 
+		 * 			>> Esperado3: null
+		 * 			>> Resultado: Correcto	
+		 * 	
+		 * */
 		
 		for (Pedido pedido : pedidosQueNoCumplen() ) {
-			Assert.assertEquals(moto.getPuntajePedido(pedido), null);			
+			Assert.assertEquals("La moto pudo hacer un pedido que no debia hacer: " + pedido, 
+														moto.getPuntajePedido(pedido), null);			
 		}
 	}
 	
 	private ArrayList<Pedido> pedidosQueCumplen() {
+		/*
+		 * 	Escenario: Pedidos que cumplen
+		 * 
+		 * 					cliente: 	("A", "A", "A")
+		 * 			PedidoQueCumple1: 	(cliente, 1 pasajero, SIN mascota, SIN baul, 3312km, Zona sin asfaltar)
+		 * 			PedidoQueCumple2: 	(cliente, 1 pasajero, SIN mascota, SIN baul, 12341, Zona estandar)
+		 * 			PedidoQueCumple3: 	(cliente, 1 pasajero, SIN mascota, SIN baul, 42891, Zona peligrosa)
+		 * 
+		 * 
+		 * */
+		
 		ArrayList<Pedido> pedidos = new ArrayList<>(); 
 		
 		cliente = new Cliente("A", "A", "A");
 		int cantidadPasajeros = 1;
 		boolean mascota = false;
-		boolean baul = true;
+		boolean baul = false;
 		
 		pedidos.add(new Pedido(cliente, cantidadPasajeros, mascota, baul, 3312, Constantes.ZONA_SIN_ASFALTAR));
 		
 		pedidos.add(new Pedido(cliente, cantidadPasajeros, mascota, baul, 12341, Constantes.ZONA_STANDARD));
 
-		pedidos.add(new Pedido(cliente, cantidadPasajeros, mascota, baul, 42891, Constantes.ZONA_SIN_ASFALTAR));
+		pedidos.add(new Pedido(cliente, cantidadPasajeros, mascota, baul, 42891, Constantes.ZONA_PELIGROSA));
 				
 		return pedidos;
 	}
@@ -107,8 +143,25 @@ public class Test_Vehiculo_Moto {
 	@Test
 	public void test_getPuntajeEnvio_debeRetonar1000() {
 		
+		/*
+		 * 	Escenario: Pedidos que cumplen
+		 * 
+		 * 	Prueba: Todos los pedidos deben devolver 1000 
+		 * 	
+		 * 			>> Esperado1: 1000
+		 * 			>> Resultado: Correcto
+		 * 
+		 * 		 	>> Esperado2: 1000
+		 * 			>> Resultado: Correcto
+		 * 
+		 * 			>> Esperado3: 1000
+		 * 			>> Resultado: Correcto	
+		 * 
+		 * */
+		
+		int puntajeEseprado = 1000;
 		for (Pedido pedido : pedidosQueCumplen() ) {
-			Assert.assertEquals(moto.getPuntajePedido(pedido), null);			
+			Assert.assertTrue(moto.getPuntajePedido(pedido) == puntajeEseprado);			
 		}
 	}
 	

@@ -1,0 +1,33 @@
+package test_persistencia;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import modeloNegocio.Empresa;
+import persistencia.EmpresaDTO;
+
+public class Test_UtilPersistencia {
+
+	EmpresaDTO empresaDTO;
+	Empresa empresa;
+	
+	@BeforeClass
+	public void inicializarClases() throws Exception {
+		empresaDTO = AuxiliarPersistenciaTesting.crearEmpresaDTOGenerico();
+		empresa = Empresa.getInstance();
+		
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

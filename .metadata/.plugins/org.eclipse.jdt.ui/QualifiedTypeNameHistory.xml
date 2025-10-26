@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="util.Constantes"/>
     <fullyQualifiedTypeName name="junit.framework.Assert"/>
+    <fullyQualifiedTypeName name="org.junit.Assert"/>
+    <fullyQualifiedTypeName name="modeloDatos.Administrador"/>
+    <fullyQualifiedTypeName name="modeloDatos.Chofer"/>
+    <fullyQualifiedTypeName name="modeloDatos.ChoferTemporario"/>
+    <fullyQualifiedTypeName name="util.Mensajes"/>
+    <fullyQualifiedTypeName name="java.nio.file.Path"/>
+    <fullyQualifiedTypeName name="persistencia.UtilPersistencia"/>
+    <fullyQualifiedTypeName name="test_persistencia.AuxiliarPersistenciaTesting"/>
+    <fullyQualifiedTypeName name="modeloNegocio.Empresa"/>
+    <fullyQualifiedTypeName name="test_vista.TestUtils"/>
+    <fullyQualifiedTypeName name="util.Constantes"/>
 </qualifiedTypeNameHistroy>

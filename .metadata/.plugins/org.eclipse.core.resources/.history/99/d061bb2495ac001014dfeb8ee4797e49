@@ -1,0 +1,26 @@
+package test_excepciones;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import excepciones.ChoferNoDisponibleException;
+
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class LanzadorExcepciones {
+	
+	
+	public void lanzar_choferNoDisponibleException(Chofer chofer) {
+		throw new ChoferNoDisponibleException(chofer);
+	}
+	
+	
+}
