@@ -75,9 +75,6 @@ public class Test_Controlador_login {
 		TestUtils.borraJTextField(compPassword, robot);
 	}
 	
-	
-	
-
 }
 
 

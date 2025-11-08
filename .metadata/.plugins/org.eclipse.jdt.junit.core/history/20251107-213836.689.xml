@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Test_Gui_PanelAdmin_CrearVehiculo" project="TEST_tallerProgramacion" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="test_gui_panelAdministrador.Test_Gui_PanelAdmin_CrearVehiculo" time="10.876">
+    <testcase name="test_panelAdministrador_crearAuto_debenEstarAgregadosEnLaLista" classname="test_gui_panelAdministrador.Test_Gui_PanelAdmin_CrearVehiculo" time="7.786"/>
+    <testcase name="test_panelAdministrador_crearMoto_debenEstarAgregadosEnLaLista" classname="test_gui_panelAdministrador.Test_Gui_PanelAdmin_CrearVehiculo" time="3.09"/>
+  </testsuite>
+</testrun>

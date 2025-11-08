@@ -41,7 +41,7 @@ public class AuxiliarPersistenciaTesting {
             return (T) ois.readObject();
         }
     }
-    
+
     public static EmpresaDTO crearEmpresaDTOGenerico() {
         EmpresaDTO dto = new EmpresaDTO();
 
@@ -75,8 +75,8 @@ public class AuxiliarPersistenciaTesting {
         dto.setClientes(mapaClientes);
 
         // --- Pedidos ---
-        Pedido ped1 = new Pedido(cli1, 7,  true,  false, 10,  Constantes.ZONA_PELIGROSA);
-        Pedido ped2 = new Pedido(cli2, 9,  false, true,  321, Constantes.ZONA_STANDARD);
+        Pedido ped1 = new Pedido(cli1, 7, true, false, 10, Constantes.ZONA_PELIGROSA);
+        Pedido ped2 = new Pedido(cli2, 9, false, true, 321, Constantes.ZONA_STANDARD);
         HashMap<Cliente, Pedido> mapaPedidos = new HashMap<>();
         mapaPedidos.put(cli1, ped1);
         mapaPedidos.put(cli2, ped2);
@@ -86,8 +86,8 @@ public class AuxiliarPersistenciaTesting {
         dto.setUsuarioLogeado(Administrador.getInstance());
 
         // --- Vehículos ---
-        Vehiculo moto  = new Moto("MM123MM");
-        Vehiculo auto  = new Auto("AA123AA", 3, true);
+        Vehiculo moto = new Moto("MM123MM");
+        Vehiculo auto = new Auto("AA123AA", 3, true);
         Vehiculo combi = new Combi("CC123CC", 8, false);
 
         HashMap<String, Vehiculo> mapaVehiculos = new HashMap<>();
@@ -115,22 +115,22 @@ public class AuxiliarPersistenciaTesting {
         ArrayList<Viaje> viajesTerminados = new ArrayList<>();
         viajesTerminados.add(v3);
         dto.setViajesTerminados(viajesTerminados);
-        
+
         return dto;
-    }	
-    
+    }
+
     private static boolean choferesIguales(EmpresaDTO empresaDTO, EmpresaDTO empresa) {
-    	String choferesDTO = empresaDTO.getChoferes().toString();
-    	String choferesEmpresa = empresa.getChoferes().toString();
-    	return choferesDTO.equals(choferesEmpresa);
+        String choferesDTO = empresaDTO.getChoferes().toString();
+        String choferesEmpresa = empresa.getChoferes().toString();
+        return choferesDTO.equals(choferesEmpresa);
     }
-    
+
     private static boolean choferesDesocupadosIguales(EmpresaDTO empresaDTO, EmpresaDTO empresa) {
-    	String choferesDesocupadosDTO = empresaDTO.getChoferesDesocupados().toString();
-    	String choferesDesocupadosEmpresa = empresa.getChoferesDesocupados().toString();    	
-    	return choferesDesocupadosDTO.equals(choferesDesocupadosEmpresa);
+        String choferesDesocupadosDTO = empresaDTO.getChoferesDesocupados().toString();
+        String choferesDesocupadosEmpresa = empresa.getChoferesDesocupados().toString();
+        return choferesDesocupadosDTO.equals(choferesDesocupadosEmpresa);
     }
-    
+
     private static boolean clientesIguales(EmpresaDTO empresaDTO, EmpresaDTO empresa) {
         String clientesDTO = empresaDTO.getClientes().toString();
         String clientesEmpresa = empresa.getClientes().toString();
@@ -142,7 +142,7 @@ public class AuxiliarPersistenciaTesting {
         String vehiculosEmpresa = empresa.getVehiculos().toString();
         return vehiculosDTO.equals(vehiculosEmpresa);
     }
-    
+
     private static boolean vehiculosDesocupadosIguales(EmpresaDTO empresaDTO, EmpresaDTO empresa) {
         String vehiculosDesocupadosDTO = empresaDTO.getVehiculosDesocupados().toString();
         String vehiculosDesocupadosEmpresa = empresa.getVehiculosDesocupados().toString();
@@ -150,13 +150,13 @@ public class AuxiliarPersistenciaTesting {
     }
 
     private static boolean pedidosIguales(EmpresaDTO empresaDTO, EmpresaDTO empresa) {
-        String pedidosDTO = empresaDTO.getPedidos().toString();        
+        String pedidosDTO = empresaDTO.getPedidos().toString();
         String pedidosEmpresa = empresa.getPedidos().toString();
         pedidosDTO = sortString(pedidosDTO);
         pedidosEmpresa = sortString(pedidosEmpresa);
         return pedidosDTO.equals(pedidosEmpresa);
     }
-    
+
     private static String sortString(String str) {
         char[] charArray = str.toCharArray();
         Arrays.sort(charArray);
@@ -179,45 +179,45 @@ public class AuxiliarPersistenciaTesting {
 
     public static boolean sonIguales(EmpresaDTO dto, EmpresaDTO emp) {
         return clientesIguales(dto, emp)
-            && choferesIguales(dto, emp)
-            && vehiculosIguales(dto, emp)
-            && choferesDesocupadosIguales(dto, emp)
-            && vehiculosDesocupadosIguales(dto, emp)
-            && pedidosIguales(dto, emp)
-            && viajesIniciadosIguales(dto, emp)
-            && viajesTerminadosIguales(dto, emp);
+                && choferesIguales(dto, emp)
+                && vehiculosIguales(dto, emp)
+                && choferesDesocupadosIguales(dto, emp)
+                && vehiculosDesocupadosIguales(dto, emp)
+                && pedidosIguales(dto, emp)
+                && viajesIniciadosIguales(dto, emp)
+                && viajesTerminadosIguales(dto, emp);
     }
-    
+
     public static EmpresaDTO empresaToEmpresaDTO(Empresa empresa) {
         EmpresaDTO empresaDTO = new EmpresaDTO();
 
-        empresaDTO.setClientes(empresa.getClientes());                 
-        empresaDTO.setChoferes(empresa.getChoferes());                 
-        empresaDTO.setVehiculos(empresa.getVehiculos());               
+        empresaDTO.setClientes(empresa.getClientes());
+        empresaDTO.setChoferes(empresa.getChoferes());
+        empresaDTO.setVehiculos(empresa.getVehiculos());
 
         empresaDTO.setChoferesDesocupados(empresa.getChoferesDesocupados());
         empresaDTO.setVehiculosDesocupados(empresa.getVehiculosDesocupados());
 
-        empresaDTO.setPedidos(empresa.getPedidos());                   
-        empresaDTO.setViajesIniciados(empresa.getViajesIniciados());   
-        empresaDTO.setViajesTerminados(empresa.getViajesTerminados()); 
+        empresaDTO.setPedidos(empresa.getPedidos());
+        empresaDTO.setViajesIniciados(empresa.getViajesIniciados());
+        empresaDTO.setViajesTerminados(empresa.getViajesTerminados());
 
         return empresaDTO;
     }
-    
+
     public static void empresaFromEmpresaDTO(EmpresaDTO empresaDTO) {
         Empresa empresa = Empresa.getInstance();
 
-        empresa.setClientes(empresaDTO.getClientes());                 
-        empresa.setChoferes(empresaDTO.getChoferes());                 
-        empresa.setVehiculos(empresaDTO.getVehiculos());               
+        empresa.setClientes(empresaDTO.getClientes());
+        empresa.setChoferes(empresaDTO.getChoferes());
+        empresa.setVehiculos(empresaDTO.getVehiculos());
 
         empresa.setChoferesDesocupados(empresaDTO.getChoferesDesocupados());
         empresa.setVehiculosDesocupados(empresaDTO.getVehiculosDesocupados());
 
-        empresa.setPedidos(empresaDTO.getPedidos());                   
-        empresa.setViajesIniciados(empresaDTO.getViajesIniciados());   
-        empresa.setViajesTerminados(empresaDTO.getViajesTerminados()); 
+        empresa.setPedidos(empresaDTO.getPedidos());
+        empresa.setViajesIniciados(empresaDTO.getViajesIniciados());
+        empresa.setViajesTerminados(empresaDTO.getViajesTerminados());
     }
-  	
+
 }
