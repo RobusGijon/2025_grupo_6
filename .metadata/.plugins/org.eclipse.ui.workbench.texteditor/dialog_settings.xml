@@ -4,6 +4,8 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="false"/>
 		<list key="findhistory">
+			<item value="clickElemento"/>
+			<item value="clickEl"/>
 			<item value="retorno"/>
 			<item value="pedidoIne"/>
 			<item value="sinVe"/>
@@ -17,8 +19,6 @@
 			<item value="chofer"/>
 			<item value="chofr"/>
 			<item value="choferPer"/>
-			<item value="choferPerm"/>
-			<item value="getHisto"/>
 		</list>
 	</section>
 </section>
