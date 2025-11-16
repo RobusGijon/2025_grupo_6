@@ -185,16 +185,19 @@ public class TestUtils
      * @param lista  JList en el que se quiere hacer click
      * @param indice Indice del elemento en el que se quiere hacer click
      * @param robot  Referencia al Robot que se utilizará
+     *
+     *
      */
     public static <T> void clickElementoLista(JList<T> lista, int indice, Robot robot) {
         if (lista != null && indice >= 0 && indice < lista.getModel().getSize()) {
             Rectangle cellBounds = lista.getCellBounds(indice, indice);
             Point locationOnScreen = lista.getLocationOnScreen();
-            Point puntoClick = new Point(
-                    locationOnScreen.x + cellBounds.x + cellBounds.width / 2,
-                    locationOnScreen.y + cellBounds.y + cellBounds.height / 2);
 
-            robot.mouseMove(puntoClick.x, puntoClick.y);
+            // Esquina superior izquierda de la celda (un pixel adentro para asegurar que esté dentro)
+            int clickX = locationOnScreen.x + cellBounds.x + 1;
+            int clickY = locationOnScreen.y + cellBounds.y + 1;
+
+            robot.mouseMove(clickX, clickY);
             robot.delay(getDelay());
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.delay(getDelay());
