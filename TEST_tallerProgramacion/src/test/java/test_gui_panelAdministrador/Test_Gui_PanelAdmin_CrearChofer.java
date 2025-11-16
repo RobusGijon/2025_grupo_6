@@ -132,7 +132,7 @@ public class Test_Gui_PanelAdmin_CrearChofer {
 		assertTrue(campoAnio.isEnabled());
 	}
 
-//	@Test
+	@Test
 	public void test_panelAdministrador_crearChoferPermanente() {
 
 		String dniChofer = "12345678";
@@ -318,7 +318,7 @@ public class Test_Gui_PanelAdmin_CrearChofer {
 		assertTrue(botonAceptar.isEnabled());
 	}
 
-	 @Test
+	@Test
 	public void test_panelAdministrador_crearChoferExitoso_seAgregaAListaYSeVacianCampos() {
 		/*
 		 * 

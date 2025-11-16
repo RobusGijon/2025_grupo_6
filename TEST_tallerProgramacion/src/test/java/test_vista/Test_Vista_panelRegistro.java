@@ -48,7 +48,7 @@ public class Test_Vista_panelRegistro {
 	    
 	}
 	
-	
+	@Test
 	public void test_botonRegistrarHabilitado() throws InterruptedException {
 		
 		JTextField regNombreUsuario = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_USSER_NAME);

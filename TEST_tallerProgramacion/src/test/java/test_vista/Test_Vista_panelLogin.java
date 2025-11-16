@@ -56,7 +56,7 @@ public class Test_Vista_panelLogin {
 	    contrasenias.add("");
 	}
 	
-	
+	@Test
 	public void test_panelLogin_Constante() {
 		
 		JTextField compNombreUsuario = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
